@@ -11,5 +11,14 @@
   },
   "keywords": [],
   "author": "Shibi Suriya P",
-  "license": "ISC"
+  "type": "module",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^12.1.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "eslint": "9.x",
+    "globals": "^15.9.0"
+  }
 }
