@@ -1,5 +1,5 @@
 const SUPPORTED_SHELLS = {
-  ZSH: "zsh",
-};
+    ZSH: 'zsh',
+}
 
-export { SUPPORTED_SHELLS };
+export { SUPPORTED_SHELLS }

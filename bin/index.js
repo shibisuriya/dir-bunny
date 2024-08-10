@@ -3,8 +3,9 @@
 import { Command } from 'commander'
 import { init } from '../src/init/index.js'
 import { push } from '../src/push.js'
-import { pop } from '../src/pop.js'
 import { end } from '../src/end.js'
+import { jumpForward } from '../src/jump-forward.js'
+import { jumpBackward } from '../src/jump-backward.js'
 
 const program = new Command()
 
@@ -36,13 +37,6 @@ program
     })
 
 program
-    .command('pop <session-id>')
-    .description('Pop a path and session ID from the stack')
-    .action((sessionId) => {
-        pop(sessionId)
-    })
-
-program
     .command('end <session-id>')
     .description('End the current session')
     .action((sessionId) => {
@@ -54,6 +48,20 @@ program
     .description('Init the cli tool')
     .action((shell) => {
         init(shell)
+    })
+
+program
+    .command('jump-backward <session-id>')
+    .description('To back to the directory where you came from...')
+    .action((sessionId) => {
+        jumpBackward(sessionId)
+    })
+
+program
+    .command('jump-forward <session-id>')
+    .description('To forward to the directory where you came from...')
+    .action((sessionId) => {
+        jumpForward(sessionId)
     })
 
 program.parse(process.argv)
