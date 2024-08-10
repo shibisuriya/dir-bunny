@@ -20,13 +20,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
 
-      - name: git config
-        run: |
-          git config --global user.email "shibisuriya.work@gmail.com"
-          git config --global user.name "shibisuriya"
-
-
       - name: Publish package to npm registry
-        run: pnpm publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
