@@ -1,24 +1,32 @@
 {
-  "name": "dir-bunny",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "bin": {
-    "dir-bunny": "./bin/index.js"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "Shibi Suriya P",
-  "type": "module",
-  "license": "ISC",
-  "dependencies": {
-    "commander": "^12.1.0"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.9.0",
-    "eslint": "9.x",
-    "globals": "^15.9.0"
-  }
+    "name": "dir-bunny",
+    "version": "0.0.1",
+    "description": "",
+    "main": "index.js",
+    "bin": {
+        "dir-bunny": "./bin/index.js"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "Shibi Suriya P",
+    "type": "module",
+    "license": "ISC",
+    "files": [
+        "package.json",
+        "README.md",
+        "./bin",
+        "./src/",
+        "!./node_modules/**"
+    ],
+    "dependencies": {
+        "commander": "^12.1.0",
+        "sqlite3": "^5.1.7"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.9.0",
+        "eslint": "9.x",
+        "globals": "^15.9.0"
+    }
 }
