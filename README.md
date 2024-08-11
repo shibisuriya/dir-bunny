@@ -22,6 +22,6 @@ eval "$(dir-bunny init zsh)"
 
 ## Default keybindings
 
--   Jump backward: <Ctrl> + o
+-   Jump backward: Ctrl + o
 
--   Jump forward: <Ctrl> + i
+-   Jump forward: Ctrl + i
