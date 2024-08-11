@@ -1,4 +1,4 @@
-# Logs
+#2 Logs
 logs
 *.log
 npm-debug.log*
@@ -27,3 +27,5 @@ dist-ssr
 
 # Don't push the deploy keys to the public...
 .npmrc
+
+test_database.db
