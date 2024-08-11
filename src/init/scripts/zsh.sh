@@ -9,7 +9,7 @@ function go_forward() {
 }
 
 function chpwd() {
-  dir-bunny push -s "$$" -p "$PWD"
+  dir-bunny change-directory -s "$$" -p "$PWD"
 }
 
 

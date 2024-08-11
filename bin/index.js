@@ -6,6 +6,7 @@ import { push } from '../src/push.js'
 import { end } from '../src/end.js'
 import { jumpForward } from '../src/jump-forward.js'
 import { jumpBackward } from '../src/jump-backward.js'
+import { changeDirectory } from '../src/change-directory.js'
 
 const program = new Command()
 
@@ -15,14 +16,14 @@ program
     .version('0.0.1')
 
 program
-    .command('push')
+    .command('change-directory')
     .option(
         '-s, --session-id <session-id>',
         'The ID of the session to push changes to'
     )
     .option('-p, --path <path>', 'The path of the files or directory to push')
     .description('Push a path and session ID onto the stack')
-    .action((options) => {
+    .action(async (options) => {
         const { sessionId, path } = options
         if (!sessionId) {
             console.error('Error: The --session-id option is mandatory.')
@@ -33,7 +34,7 @@ program
             console.error('Error: The --path option is mandatory.')
             process.exit(1)
         }
-        push(sessionId, path)
+        await changeDirectory({ sessionId, path })
     })
 
 program

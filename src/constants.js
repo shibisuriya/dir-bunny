@@ -2,4 +2,9 @@ const SUPPORTED_SHELLS = {
     ZSH: 'zsh',
 }
 
-export { SUPPORTED_SHELLS }
+const STACK_TYPE = {
+    UNDO: 'undo',
+    REDO: 'redo',
+}
+
+export { SUPPORTED_SHELLS, STACK_TYPE }
