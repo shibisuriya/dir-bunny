@@ -28,4 +28,4 @@ dist-ssr
 # Don't push the deploy keys to the public...
 .npmrc
 
-test_database.db
+test-database.db
