@@ -6,7 +6,7 @@ async function pop({ sessionId, stackType }) {
 
     return new Promise((resolve, reject) => {
         db.serialize(() => {
-            console.log('Popping from, ', tableName)
+            // console.log('Popping from, ', tableName)
             db.get(
                 `
                     SELECT id, path
@@ -19,36 +19,45 @@ async function pop({ sessionId, stackType }) {
                         reject(err)
                     }
 
-                    db.run('BEGIN TRANSACTION', (err) => {
-                        if (err) {
-                            reject(err)
-                        }
-                        const { id } = row
-                        db.run(
-                            `DELETE FROM ${tableName} WHERE id = ?`,
-                            [id],
-                            function (err) {
-                                if (err) {
-                                    db.run('ROLLBACK', (rollbackErr) => {
-                                        if (rollbackErr) {
-                                            reject(rollbackErr)
-                                        }
-                                    })
-                                    reject(err)
-                                }
-
-                                db.run('COMMIT', (commitErr) => {
-                                    if (commitErr) {
-                                        reject(commitErr)
+                    if (row) {
+                        db.run('BEGIN TRANSACTION', (err) => {
+                            if (err) {
+                                reject(err)
+                            }
+                            const { id } = row
+                            db.run(
+                                `DELETE FROM ${tableName} WHERE id = ?`,
+                                [id],
+                                function (err) {
+                                    if (err) {
                                         db.run('ROLLBACK', (rollbackErr) => {
-                                            reject(rollbackErr)
+                                            if (rollbackErr) {
+                                                reject(rollbackErr)
+                                            }
+                                            reject(err)
                                         })
                                     }
-                                    resolve(row.path)
-                                })
-                            }
-                        )
-                    })
+
+                                    db.run('COMMIT', (commitErr) => {
+                                        if (commitErr) {
+                                            db.run(
+                                                'ROLLBACK',
+                                                (rollbackErr) => {
+                                                    if (rollbackErr) {
+                                                        reject(rollbackErr)
+                                                    }
+                                                    reject(commitErr)
+                                                }
+                                            )
+                                        }
+                                        resolve(row.path)
+                                    })
+                                }
+                            )
+                        })
+                    } else {
+                        resolve()
+                    }
                 }
             )
         })

@@ -1,17 +1,34 @@
 #!/bin/zsh
 
+typeset -g previous_dir
+typeset -g did_jump
+
+previous_dir="$PWD"
+did_jump=false
+
 function go_back() {
-  dir-bunny jump-backward "$$"
+  did_jump=true
+
+  dir=$(dir-bunny jump-backward "$$")
+
+  if [[ -n "$dir" ]]; then
+    cd "$dir"
+  fi
+
+  zle reset-prompt
 }
 
 function go_forward() {
-  dir-bunny jump-forward "$$"
-}
+  did_jump=true
 
-function chpwd() {
-  dir-bunny change-directory -s "$$" -p "$PWD"
-}
+  dir=$(dir-bunny jump-forward "$$")
 
+  if [[ -n "$dir" ]]; then
+    cd "$dir"
+  fi
+
+  zle reset-prompt
+}
 
 zle -N go_back
 zle -N go_forward
@@ -19,10 +36,25 @@ zle -N go_forward
 bindkey '^o' go_back
 bindkey '^i' go_forward
 
-
-
 function on_exit() {
   echo "Shell is exiting..." >> /tmp/dir-bunny-debug.log
 }
 
+function chpwd() {
+    # `chpwd` is a zsh's hook that gets called when shell's current working
+    # directory changes.
+
+    if [[ $did_jump == false ]]; then
+        if [[ "$PWD" != "$previous_dir" ]]; then
+          dir-bunny change-directory -s "$$" -p "$previous_dir"
+        fi
+    fi
+
+    did_jump=false
+    previous_dir="$PWD"
+
+}
+
 TRAPEXIT=on_exit
+
+

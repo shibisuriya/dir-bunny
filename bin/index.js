@@ -2,11 +2,12 @@
 
 import { Command } from 'commander'
 import { init } from '../src/init/index.js'
-import { push } from '../src/push.js'
 import { end } from '../src/end.js'
 import { jumpForward } from '../src/jump-forward.js'
 import { jumpBackward } from '../src/jump-backward.js'
 import { changeDirectory } from '../src/change-directory.js'
+import { printStacks } from '../src/print-stacks.js'
+import { clearStacks } from '../src/clear-stacks.js'
 
 const program = new Command()
 
@@ -63,6 +64,22 @@ program
     .description('To forward to the directory where you came from...')
     .action((sessionId) => {
         jumpForward(sessionId)
+    })
+
+program
+    .command('print-stacks <session-id>')
+    .description(
+        'Prints the content of undo and redo stack of a dir-bunny session.'
+    )
+    .action(async (sessionId) => {
+        await printStacks(sessionId)
+    })
+
+program
+    .command('clear-stacks <session-id>')
+    .description('Clears the undo and redo stack of a dir-bunny session.')
+    .action(async (sessionId) => {
+        await clearStacks(sessionId)
     })
 
 program.parse(process.argv)

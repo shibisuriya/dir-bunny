@@ -30,24 +30,14 @@ async function push({ sessionId, path, stackType = STACK_TYPE.UNDO }) {
                                     `SELECT * FROM ${tableName};`,
                                     (err, rows) => {
                                         if (err) {
-                                            console.error(
-                                                `Error retrieving data from ${tableName}:`,
-                                                err.message
-                                            )
+                                            reject(err)
                                         } else {
-                                            console.log(
-                                                `Contents of table ${tableName}:`
-                                            )
-                                            console.log(rows)
+                                            stmt.finalize(() => {
+                                                resolve()
+                                            })
                                         }
-
-                                        // Finalize the statement and close the database
-                                        stmt.finalize(() => {
-                                            resolve()
-                                        })
                                     }
                                 )
-                                resolve()
                             }
                         })
                     }
