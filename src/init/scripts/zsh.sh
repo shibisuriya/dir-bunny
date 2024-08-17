@@ -33,8 +33,9 @@ function go_forward() {
 zle -N go_back
 zle -N go_forward
 
-bindkey '^o' go_back
-bindkey '^i' go_forward
+bindkey -a '^O' go_back
+
+bindkey -a '^I' go_forward
 
 function on_exit() {
   echo "Shell is exiting..." >> /tmp/dir-bunny-debug.log
