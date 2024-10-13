@@ -1,3 +1,7 @@
+[tutorial]: contrib/tutorial.webp
+
+![Tutorial][tutorial]
+
 # dir-bunny
 
 <img src="https://raw.githubusercontent.com/shibisuriya/dir-bunny/main/dir-bunny.gif" alt="dir-bunny" width="400" height="auto" />
