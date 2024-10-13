@@ -1,6 +1,6 @@
-[tutorial]: contrib/hero-banner.webp
-
-![Tutorial][tutorial]
+<p align="center">
+  <img src="contrib/hero-banner.webp" alt="Hero banner" width="600" height="auto">
+</p>
 
 # dir-bunny
 
