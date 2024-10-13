@@ -1,11 +1,6 @@
 # dir-bunny
 
-![banner](https://github.com/shibisuriya/dir-bunny/blob/main/dir-bunny.gif)
-
-<video width="400" height="auto" controls autoplay loop muted>
-  <source src="https://github.com/shibisuriya/dir-bunny/blob/main/dir-bunny.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+<img src="https://github.com/shibisuriya/dir-bunny/blob/main/dir-bunny.gif" alt="dir-bunny" width="400" height="auto" />
 
 `dir-bunny` is a CLI tool that lets you hop back and forth between your current working directory and the directories you were in before.
 
