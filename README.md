@@ -1,4 +1,4 @@
-[tutorial]: contrib/tutorial.webp
+[tutorial]: contrib/hero-banner.webp
 
 ![Tutorial][tutorial]
 
