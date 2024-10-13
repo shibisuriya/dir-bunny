@@ -1,6 +1,6 @@
 # dir-bunny
 
-[banner](./dir-bunny.gif)
+![banner](https://github.com/shibisuriya/dir-bunny/blob/main/dir-bunny.gif)
 
 `dir-bunny` is a CLI tool that lets you hop back and forth between your current working directory and the directories you were in before.
 
