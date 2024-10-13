@@ -1,5 +1,7 @@
 # dir-bunny
 
+[banner](./dir-bunny.mp4)
+
 `dir-bunny` is a CLI tool that lets you hop back and forth between your current working directory and the directories you were in before.
 
 ## Installation
